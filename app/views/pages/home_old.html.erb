@@ -1,0 +1,168 @@
+
+<%# Data-URI SVG placeholders (WebP preferred later). %>
+<% placeholder_1200x800 = "data:image/svg+xml;charset=UTF-8," + CGI.escape(%Q{
+  <svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'>
+    <rect fill='#EEE' width='100%' height='100%'/>
+    <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#999' font-size='48'>1200×800 Placeholder</text>
+  </svg>
+}) %>
+
+<!-- Hero -->
+<section id="hero" class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 min-h-[70vh] flex items-center relative scroll-mt-20" tabindex="-1">
+  <div class="grid grid-cols-1 gap-10 items-center w-full py-12">
+    <div class="relative">
+      <!-- Main H1: Playfair ExtraBold, size ~80, rotated -90deg on lg+ -->
+      <p class="mt-6 lg:mt-72 text-body font-shippori font-bold text-[20px] sm:text-[22px] md:text-[24px] leading-[30px] text-neutral-900 max-w-prose">
+        スタイルも、 時間も、もっと自由に。
+      </p>
+      <h1 class="font-playfair font-extrabold text-[56px] sm:text-[64px] lg:text-[80px] leading-[1.1] text-brand-ink origin-top-left lg:absolute lg:-left-8 lg:top-0">
+        hacona
+      </h1>
+      <p class="mt-6 lg:mt-72 text-body font-shippori font-bold text-[20px] sm:text-[22px] md:text-[24px] leading-[30px] text-neutral-900 max-w-prose">
+        Hair Salon
+      </p>
+
+    </div>
+
+    <div class="aspect-[4/3] w-full overflow-hidden rounded-xl border border-neutral-200">
+      <img
+        src="<%= placeholder_1200x800 %>"
+        alt="Showcase piece"
+        width="1200" height="800"
+        class="h-full w-full object-cover"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- Concept -->
+<section id="concept" class="grid grid-col-2 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 scroll-mt-20" tabindex="-1">
+  <div>
+  <h2 class="font-playfair font-extrabold text-[30px] text-brand-accent mb-8 lg:-rotate-90">Concept</h2>
+  </div>
+  <div class="grid gap-6">
+    <% [
+      {title: "about hacona", body: "2023年6月8日 OPEN。 キッズスペース完備で、お子様連れでも安心の少人数制サロン。 髪と頭皮に優しい「ヴィラロドラ」オーガニックカラーを導入し、ダメージレスにこだわった施術を提供。 高い技術で、忙しい朝も簡単にキマる似合わせスタイルに。"},
+      
+    ].each do |f| %>
+      <article class="rounded-xl border border-neutral-200 p-6 bg-white shadow-sm hover:shadow transition">
+        <h3 class="font-shippori font-bold text-lg text-brand-ink"><%= f[:title] %></h3>
+        <p class="mt-3 font-shippori font-bold text-[20px] leading-[30px] text-neutral-900"><%= f[:body] %></p>
+      </article>
+    <% end %>
+  </div>
+</section>
+
+<!-- Reservation -->
+<section id="reservation" class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 scroll-mt-20" tabindex="-1">
+  <h2 class="font-shippori font-bold text-[30px] text-brand-accent mb-6">Reservation</h2>
+  <div class="grid gap-8">
+    <p class="font-shippori font-bold text-[20px] leading-[30px] text-neutral-900">
+      予約ボタン
+    </p>
+    <div class="flex items-center gap-4">
+      <a href="mailto:hello@example.com" class="inline-flex items-center justify-center rounded-md bg-brand-accent px-5 py-3 text-white hover:opacity-90">HOT PEPPER Beauty</a>
+      <br>
+      <p class="inline-flex items-center justify-center rounded-md bg-brand-accent px-5 py-3 text-white hover:opacity-90">TEL 080-3338-8577</p>
+    </div>
+  </div>
+</section>
+
+<!-- Menu -->
+<section id="menu" class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 scroll-mt-20" tabindex="-1">
+  <h2 class="font-shippori font-bold text-[30px] text-brand-accent mb-8">Menu</h2>
+  <div class="grid gap-6">
+    <% [
+      {title: "Style 1", body: "カラー ¥7,100～"},
+      {title: "Style 2", body: "縮毛矯正 ¥18,000～"},
+      {title: "Style 3", body: "パーマ ¥11,000～"},
+      {title: "Style 4", body: "カット ¥4,900～"}
+    ].each do |f| %>
+      <article class="rounded-xl border border-neutral-200 p-6 bg-white shadow-sm hover:shadow transition">
+        <h3 class="font-shippori font-bold text-lg text-brand-ink"><%= f[:title] %></h3>
+        <p class="mt-3 font-shippori font-bold text-[20px] leading-[30px] text-neutral-900"><%= f[:body] %></p>
+      </article>
+    <% end %>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery" class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 scroll-mt-20" tabindex="-1"
+  data-controller="gallery"
+  data-gallery-interval-value="4500"
+  data-gallery-pause-on-hover-value="true"
+>
+  <h2 class="font-playfair font-extrabold text-[85px] text-brand-accent mb-6">Gallery</h2>
+
+  <div class="relative" data-gallery-target="viewport" tabindex="0" aria-label="Carousel viewport">
+    <ul class="flex w-full overflow-hidden rounded-xl border border-neutral-200" data-gallery-target="track">
+      <% slides = [
+        {alt: "1",    w: 1200, h: 800},
+        {alt: "2",      w: 1200, h: 800},
+        {alt: "3",  w: 1200, h: 800}
+      ] %>
+      <% slides.each do |s| %>
+        <li class="min-w-full aspect-[3/2]">
+          <img
+            src="<%= placeholder_1200x800 %>"
+            alt="<%= s[:alt] %>"
+            width="<%= s[:w] %>" height="<%= s[:h] %>"
+            class="h-full w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </li>
+      <% end %>
+    </ul>
+
+    <!-- Controls -->
+    <div class="pointer-events-none absolute inset-0 flex items-center justify-between p-2 sm:p-4">
+      <button type="button" class="pointer-events-auto inline-flex items-center justify-center rounded-full bg-white/80 hover:bg-white shadow border border-neutral-200 h-10 w-10"
+        aria-label="Previous slide" data-action="gallery#prev">
+        <span aria-hidden="true" class="inline-block rotate-180">&rarr;</span>
+      </button>
+      <button type="button" class="pointer-events-auto inline-flex items-center justify-center rounded-full bg-white/80 hover:bg-white shadow border border-neutral-200 h-10 w-10"
+        aria-label="Next slide" data-action="gallery#next">
+        <span aria-hidden="true">&rarr;</span>
+      </button>
+    </div>
+
+    
+  </div>
+</section>
+
+
+
+<!-- Access -->
+<section id="access" class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 scroll-mt-20" tabindex="-1">
+  <h2 class="font-shippori font-bold text-[30px] text-brand-accent mb-6">Access</h2>
+  <div class="grid gap-8 items-start">
+    <div>
+      <p class="font-shippori font-bold text-[20px] leading-[30px] text-neutral-900">
+        宮城県仙台市青葉区荒巻神明町25-6 ハイネス愛幸102号室
+      </p>
+      <p class="mt-2 text-sm text-neutral-600">Open by appointment.</p>
+    </div>
+    <div class="w-full overflow-hidden rounded-xl border border-neutral-200">
+      <div class="aspect-[16/9] w-full">
+        <iframe
+          title="Map to Atelier Miyagi"
+          aria-label="Google Map"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          sandbox="allow-scripts allow-same-origin allow-popups"
+          class="h-full w-full"
+          width="1280" height="720"
+          src="<%= 'https://www.google.com/maps?q=' + CGI.escape('宮城県仙台市青葉区荒巻神明町25-6 ハイネス愛幸102号室') + '&output=embed' %>">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+

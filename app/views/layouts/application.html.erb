@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Hacona" %></title>
+    <meta name="description" content="仙台のプライベートヘアサロン hacona。キッズスペース完備・ダメージレス施術・予約制。" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Hacona">
+    <meta name="mobile-web-app-capable" content="yes">
+
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="hacona hair salon" />
+    <meta property="og:description" content="仙台のプライベートヘアサロン hacona。キッズスペース完備・ダメージレス施術・予約制。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind build (from tailwindcss-rails) -->
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+  
+
+    <!-- Importmap + Hotwire -->
+    <%= javascript_importmap_tags %>
+
+
+   
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+  </head>
+
+  <body data-controller="smooth-scroll" data-smooth-scroll-header-selector-value="#site-header">
+    
+
+
+
+
+
+
+ 
+  <!-- Sticky Header -->
+    <header
+      id="site-header"
+      class="fixed top-0 inset-x-0 z-1000 h-16 bg-[#FFF9CF]"
+    >
+      <nav class="container mx-auto max-w-7xl h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <a href="#hero" data-action="click->smooth-scroll#toSection" class="header-text"><h2>hacona</h2><h3>hair salon</h3></a>
+        <ul class="hidden md:flex items-center gap-6">
+          <li><a href="#hero"        data-action="click->smooth-scroll#toSection" class="header-text"><h1>HOME</h1></a></li>
+          <li><a href="#concept"     data-action="click->smooth-scroll#toSection" class="header-text"><h1>CONCEPT</h1></a></li>
+          <li><a href="#reservation" data-action="click->smooth-scroll#toSection" class="header-text"><h1>RESERVATION</h1></a></li>
+          <li><a href="#menu"        data-action="click->smooth-scroll#toSection" class="header-text"><h1>MENU</h1></a></li>
+          <li><a href="#access"      data-action="click->smooth-scroll#toSection" class="header-text"><h1>ACCESS</h1></a></li>
+        </ul>
+      </nav>
+    </header>
+
+<!-- Main content (pad for fixed header) -->
+    <main class="pt-16">
+      
+      <%= yield %>
+    
+     
+      
+    </main>
+
+
+
+<!-- Footer -->
+    <footer class="border-t border-neutral-200 mt-16">
+      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 text-sm text-neutral-600 flex flex-col sm:flex-row gap-2 sm:gap-4 items-start sm:items-center justify-between">
+        <p>&copy; <%= Time.current.year %> hacona hair salon.</p>
+        <p class="text-neutral-500">営業時間：9:30〜16:00　定休日：日・祝・月</p>
+      </div>
+    </footer>
+
+  </body>
+</html>
