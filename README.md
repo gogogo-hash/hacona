@@ -5,6 +5,10 @@ application up and running.
 
 Things you may want to cover:
 
+follow install instructions for ruby online using wsl
+intall gem file depenancies
+run bin/dev to start server
+
 * Ruby version
 
 * System dependencies
